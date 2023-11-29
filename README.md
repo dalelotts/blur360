@@ -37,7 +37,8 @@ OpenCV: On Linux, install via the package manager. For other platforms try https
 
 With those installed (for Linux):
 ```
-meson build
+brew bundle
+meson setup build
 ninja -C build
 ```
 

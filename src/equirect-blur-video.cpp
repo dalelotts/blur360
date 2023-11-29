@@ -128,7 +128,7 @@ new_stream (GstElement *parse, GstPad * pad, struct BlurData *bd)
     GstElement* mq = gst_bin_get_by_name(bd->pipeline, "mq");
     assert(mq != NULL);
 
-    GstPad* mq_sink = gst_element_get_request_pad(mq, "sink_%u");
+    GstPad* mq_sink = gst_element_request_pad_simple(mq, "sink_%u");
     gchar* sink_name = gst_pad_get_name(mq_sink);
     gchar* src_name = g_strdup_printf("src_%s", sink_name + 5);
     GstPad* mq_src = gst_element_get_static_pad(mq, src_name);
@@ -163,7 +163,7 @@ new_stream (GstElement *parse, GstPad * pad, struct BlurData *bd)
       }
 
       GstPad *srcpad = gst_element_get_static_pad (blur_bin, "src");
-      GstPad *mux_pad = gst_element_get_request_pad (bd->mux, "video_%u");
+      GstPad *mux_pad = gst_element_request_pad_simple (bd->mux, "video_%u");
       if (gst_pad_link (srcpad, mux_pad) != GST_PAD_LINK_OK) {
         cerr << "Error linking blur filter to encoder" << endl;
         GST_ELEMENT_ERROR (bd->pipeline, LIBRARY, INIT, ("Failed to create blurring filter"), (NULL));
@@ -191,7 +191,7 @@ new_stream (GstElement *parse, GstPad * pad, struct BlurData *bd)
       }
 
       GstPad* srcpad = gst_element_get_static_pad(pass_bin, "src");
-      GstPad *mux_pad = gst_element_get_request_pad (bd->mux, "audio_%u");
+      GstPad *mux_pad = gst_element_request_pad_simple (bd->mux, "audio_%u");
       if (gst_pad_link (srcpad, mux_pad) != GST_PAD_LINK_OK) {
         cerr << "Error linking audio stream to muxer. Ignoring." << endl;
       }
