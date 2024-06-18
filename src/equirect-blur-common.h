@@ -1,3 +1,6 @@
+#ifndef EQUIRECT_BLUR_COMMON_H
+#define EQUIRECT_BLUR_COMMON_H
+
 #include <math.h>
 #include <opencv2/opencv.hpp>
 #include "PCN.h"
@@ -48,3 +51,5 @@ bool equirect_blur_process_frame(
     cv::Mat &image,
     std::vector<Projection> &projections,
     bool draw_over_faces);
+
+#endif // EQUIRECT_BLUR_COMMON_H

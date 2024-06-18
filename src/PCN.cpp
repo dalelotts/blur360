@@ -1,5 +1,11 @@
+#include <opencv2/opencv.hpp>
+#include <opencv2/core.hpp>
+#include <opencv2/imgcodecs.hpp>
+#include <opencv2/highgui.hpp>
 #include "PCN.h"
 #include "PCN_API.h"
+
+using namespace cv;
 
 struct Window2
 {

@@ -1,3 +1,4 @@
+brew "cmake"
 brew "gstreamer"
 brew "meson"
 brew "ninja"
